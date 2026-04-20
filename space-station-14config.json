@@ -1,0 +1,19 @@
+[
+    {
+        "DisplayName": "Hostname",
+        "Category": "Server Settings",
+        "Description": "",
+        "Keywords": "hostname",
+        "FieldName": "",
+        "InputType": "text",
+        "IsFlagArgument": false,
+        "ParamFieldName": "",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "My SS14 server",
+        "Placeholder": "My SS14 server",
+        "Suffix": "",
+        "Hidden": false,
+        "SkipIfEmpty": false,
+        "EnumValues": {}
+    }
+]
