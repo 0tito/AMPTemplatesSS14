@@ -1,7 +1,7 @@
 [
     {
         "DisplayName": "Hostname",
-        "Category": "Server Settings",
+        "Category": "Configuration::General",
         "Description": "The name shown in the server list",
         "Keywords": "hostname name",
         "FieldName": "game.hostname",
@@ -18,7 +18,7 @@
     },
     {
         "DisplayName": "Max Players",
-        "Category": "Server Settings",
+        "Category": "Configuration::General",
         "Description": "Maximum number of simultaneous connections",
         "Keywords": "max players slots connections",
         "FieldName": "net.max_connections",
@@ -35,7 +35,7 @@
     },
     {
         "DisplayName": "Lobby Enabled",
-        "Category": "Server Settings",
+        "Category": "Configuration::General",
         "Description": "Show the lobby screen before rounds start",
         "Keywords": "lobby",
         "FieldName": "game.lobbyenabled",
@@ -52,7 +52,7 @@
     },
     {
         "DisplayName": "Welcome Message",
-        "Category": "Server Settings",
+        "Category": "Configuration::General",
         "Description": "Message shown to players when they join",
         "Keywords": "welcome motd message",
         "FieldName": "game.welcomemsg",
@@ -69,7 +69,7 @@
     },
     {
         "DisplayName": "Authentication Mode",
-        "Category": "Server Settings",
+        "Category": "Configuration::General",
         "Description": "0 = No auth (guests allowed), 1 = SS14 account required, 2 = Whitelisted accounts only",
         "Keywords": "auth authentication whitelist",
         "FieldName": "auth.mode",
@@ -86,7 +86,7 @@
     },
     {
         "DisplayName": "Advertise to Hub",
-        "Category": "Server Settings",
+        "Category": "Configuration::General",
         "Description": "Show this server on the public SS14 server list",
         "Keywords": "hub advertise public list",
         "FieldName": "hub.advertise",
@@ -103,7 +103,7 @@
     },
     {
         "DisplayName": "Port",
-        "Category": "Network",
+        "Category": "Configuration::Network",
         "Description": "UDP port the server listens on",
         "Keywords": "port network",
         "FieldName": "net.port",
