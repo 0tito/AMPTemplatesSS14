@@ -45,7 +45,7 @@
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
         "UpdateSourceArgs": "-c \"export DOTNET_ROOT='{{$FullRootDir}}.dotnet' && export PATH=$PATH:'{{$FullRootDir}}.dotnet' && cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64\"",
-        "SkipOnFailure": false
+        "SkipOnFailure": true
     },
     {
         "UpdateStageName": "Extract Server Files",
@@ -53,7 +53,7 @@
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
         "UpdateSourceArgs": "-c \"mkdir -p '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server' && unzip -o '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/SS14.Server_linux-x64.zip' -d '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server'\"",
-        "SkipOnFailure": false
+        "SkipOnFailure": true
     },
     {
         "UpdateStageName": "Set Permissions",
@@ -61,6 +61,6 @@
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
         "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server/Robust.Server'\"",
-        "SkipOnFailure": false
+        "SkipOnFailure": true
     }
 ]
