@@ -1,1 +1,58 @@
-[]
+[
+    {
+        "UpdateStageName": "Check dotnet",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"dotnet --list-sdks | grep -q '^10\\.' || (echo 'ERROR: dotnet 10 SDK is not installed on this machine. Please install it before using this template.' && exit 1)\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Clone or Update Repository",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"if [ -d '{{$FullRootDir}}serverfiles/{{ForkName}}/.git' ]; then cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && git pull; else git clone '{{ForkRepoURL}}' '{{$FullRootDir}}serverfiles/{{ForkName}}'; fi\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Run Setup Script",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && python3 run_this.py\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Build Content.Packaging",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet build Content.Packaging --configuration Release\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Package Server",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Extract Server Files",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"mkdir -p '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server' && unzip -o '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/SS14.Server_linux-x64.zip' -d '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server'\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Set Permissions",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server/Robust.Server'\"",
+        "SkipOnFailure": false
+    }
+]
