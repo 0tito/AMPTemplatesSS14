@@ -66,7 +66,7 @@ App.ExecutableLinux=serverfiles/{{ForkName}}/Release/server/Robust.Server
 App.LinuxCommandLineArgs=
 App.Ports=@IncludeJson[space-station-14ports.json]
 App.UpdateSources=@IncludeJson[space-station-14updates.json]
-App.EnvironmentVariables={"LD_LIBRARY_PATH": "{{$FullBaseDir}}linux64:{{$FullRootDir}}linux64:%LD_LIBRARY_PATH%"}
+App.EnvironmentVariables={"LD_LIBRARY_PATH": "{{$FullBaseDir}}linux64:{{$FullRootDir}}linux64:%LD_LIBRARY_PATH%", "DOTNET_ROOT": "{{$FullRootDir}}.dotnet", "PATH": "{{$FullRootDir}}.dotnet:%PATH%"}
 
 Console.FilterMatchRegex=
 Console.FilterMatchReplacement=

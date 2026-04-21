@@ -1,10 +1,10 @@
 [
     {
-        "UpdateStageName": "Check dotnet",
+        "UpdateStageName": "Install dotnet 10",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"dotnet --list-sdks | grep -q '^10\\.' || (echo 'ERROR: dotnet 10 SDK is not installed on this machine. Please install it before using this template.' && exit 1)\"",
+        "UpdateSourceArgs": "-c \"if ! command -v dotnet &>/dev/null || ! dotnet --list-sdks | grep -q '^10\\.'; then curl -fsSL https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh && chmod +x dotnet-install.sh && ./dotnet-install.sh --channel 10.0 --install-dir '{{$FullRootDir}}.dotnet' && rm dotnet-install.sh; fi\"",
         "SkipOnFailure": false
     },
     {
@@ -28,7 +28,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet build Content.Packaging --configuration Release\"",
+        "UpdateSourceArgs": "-c \"export DOTNET_ROOT='{{$FullRootDir}}.dotnet' && export PATH=$PATH:'{{$FullRootDir}}.dotnet' && cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet build Content.Packaging --configuration Release\"",
         "SkipOnFailure": false
     },
     {
@@ -36,7 +36,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64\"",
+        "UpdateSourceArgs": "-c \"export DOTNET_ROOT='{{$FullRootDir}}.dotnet' && export PATH=$PATH:'{{$FullRootDir}}.dotnet' && cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64\"",
         "SkipOnFailure": false
     },
     {
