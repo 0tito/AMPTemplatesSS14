@@ -8,6 +8,14 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "Install dotnet 9",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"if ! '{{$FullRootDir}}.dotnet/dotnet' --list-sdks 2>/dev/null | grep -q '^9\\.'; then curl -fsSL https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh && chmod +x dotnet-install.sh && ./dotnet-install.sh --channel 9.0 --install-dir '{{$FullRootDir}}.dotnet' && rm dotnet-install.sh; fi\"",
+        "SkipOnFailure": false
+    },
+    {
         "UpdateStageName": "Clone or Update Repository",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
