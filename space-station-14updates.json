@@ -20,7 +20,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && python3 run_this.py\"",
+        "UpdateSourceArgs": "-c \"cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && python3 RUN_THIS.py\"",
         "SkipOnFailure": false
     },
     {
