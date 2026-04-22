@@ -52,7 +52,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"mkdir -p '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server' && unzip -o '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/SS14.Server_linux-x64.zip' -d '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server'\"",
+        "UpdateSourceArgs": "-c \"mkdir -p '{{$FullRootDir}}serverfiles/{{ForkName}}/release/server' && unzip -o '{{$FullRootDir}}serverfiles/{{ForkName}}/release/SS14.Server_linux-x64.zip' -d '{{$FullRootDir}}serverfiles/{{ForkName}}/release/server'\"",
         "SkipOnFailure": true
     },
     {
@@ -60,7 +60,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/server/Robust.Server'\"",
+        "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}serverfiles/{{ForkName}}/release/server/Robust.Server'\"",
         "SkipOnFailure": true
     }
 ]
