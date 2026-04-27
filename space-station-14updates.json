@@ -32,30 +32,6 @@
         "SkipOnFailure": false
     },
     {
-        "UpdateStageName": "Build Content.Packaging",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"export DOTNET_ROOT='{{$FullRootDir}}.dotnet' && export PATH=$PATH:'{{$FullRootDir}}.dotnet' && cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet build Content.Packaging --configuration Release\"",
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Package Server",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"export DOTNET_ROOT='{{$FullRootDir}}.dotnet' && export PATH=$PATH:'{{$FullRootDir}}.dotnet' && cd '{{$FullRootDir}}serverfiles/{{ForkName}}' && dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64\"",
-        "SkipOnFailure": true
-    },
-    {
-        "UpdateStageName": "List Release folder contents",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"find '{{$FullRootDir}}serverfiles/{{ForkName}}/' -name 'release' -o -name 'Release' 2>/dev/null | head -5 && echo '---' && ls -la '{{$FullRootDir}}serverfiles/{{ForkName}}/release/' 2>/dev/null || ls -la '{{$FullRootDir}}serverfiles/{{ForkName}}/Release/' 2>/dev/null || echo 'No release folder found'\"",
-        "SkipOnFailure": true
-    },
-    {
         "UpdateStageName": "Extract Server Files",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
