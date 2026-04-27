@@ -47,12 +47,12 @@
         "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}serverfiles/{{ForkName}}/release/server/Robust.Server'\"",
         "SkipOnFailure": true
     },
-    {
-    "UpdateStageName": "Run Robust.Server",
+{
+    "UpdateStageName": "Run Robust.Server with dotnet",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
-    "UpdateSourceData": "{{$FullRootDir}}serverfiles/{{ForkName}}/release/server/Robust.Server",
-    "UpdateSourceArgs": "",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"export DOTNET_ROOT='{{$FullRootDir}}.dotnet' && export PATH=\\$PATH:'{{$FullRootDir}}.dotnet' && dotnet '{{$FullRootDir}}serverfiles/{{ForkName}}/release/server/Robust.Server'\"",
     "SkipOnFailure": false
-    }
+}
 ]
