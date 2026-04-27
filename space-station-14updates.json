@@ -46,5 +46,13 @@
         "UpdateSourceData": "/bin/bash",
         "UpdateSourceArgs": "-c \"chmod +x '{{$FullRootDir}}serverfiles/{{ForkName}}/release/server/Robust.Server'\"",
         "SkipOnFailure": true
+    },
+    {
+    "UpdateStageName": "Run Robust.Server",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "{{$FullRootDir}}serverfiles/{{ForkName}}/release/server/Robust.Server",
+    "UpdateSourceArgs": "",
+    "SkipOnFailure": false
     }
 ]
